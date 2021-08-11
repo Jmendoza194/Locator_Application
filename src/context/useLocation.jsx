@@ -10,11 +10,27 @@ const locationReducer = (state, action) => {
         locations: action.payload,
       };
     }
-    case "select_location": {
+    case "get_directions": {
       console.log(action.payload);
       return {
         ...state,
         selected_location: action.payload,
+        map: true,
+      };
+    }
+    case "more_info": {
+      console.log(action.payload);
+      return {
+        ...state,
+        selected_location: action.payload,
+        modal: true,
+      };
+    }
+    case "close_modal": {
+      console.log(action.payload);
+      return {
+        ...state,
+        modal: false,
       };
     }
     default: {
@@ -27,6 +43,8 @@ const LocationProvider = ({ children }) => {
   const [state, dispatch] = useReducer(locationReducer, {
     locations: [],
     selected_location: {},
+    modal: false,
+    map: false,
   });
   const value = { state, dispatch };
 

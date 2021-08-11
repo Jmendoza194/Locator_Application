@@ -30,6 +30,9 @@ const Home = () => {
       setOpenList(!openList);
     }
   };
+
+  const handleInfoClick = () => {};
+
   return (
     <AppContainer>
       <Header />

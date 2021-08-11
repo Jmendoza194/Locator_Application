@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box } from "grommet";
+import { Box, Heading } from "grommet";
 import styled from "styled-components";
 
 import CardList from "../Cards/CardList.component";
@@ -17,23 +17,31 @@ const LocationTable = () => {
   };
 
   return (
-    <TableContainer>
-      <CardList />
-      <MapContainer center={center} />
-    </TableContainer>
+    <>
+      <TableContainer gap="small">
+        <Heading>Found {state.locations.length} Trucks</Heading>
+        <InnerContainer>
+          <CardList />
+          <MapContainer center={center} />
+        </InnerContainer>
+      </TableContainer>
+    </>
   );
 };
 
 const TableContainer = styled(Box)`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
   grid-column: 3/9;
   grid-row: 2/6;
-  box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2);
 
   @media only screen and (${breakpoint.device.sm}) {
     display: none;
   }
+`;
+
+const InnerContainer = styled(Box)`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2);
 `;
 
 export default LocationTable;

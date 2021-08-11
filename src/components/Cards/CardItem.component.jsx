@@ -20,9 +20,13 @@ const CardItem = ({ locationInfo }) => {
   const { dispatch } = useLocation();
   const { address, city, state, name, postal_code } = locationInfo;
 
-  const handleClick = () => {
-    dispatch({ type: "select_location", payload: locationInfo });
+  const handleDirectionsClick = () => {
+    dispatch({ type: "get_directions", payload: locationInfo });
     console.log(locationInfo);
+  };
+
+  const handleInfoClick = () => {
+    dispatch({ type: "more_info", payload: locationInfo });
   };
 
   return (
@@ -46,8 +50,8 @@ const CardItem = ({ locationInfo }) => {
         </Box>
       </CardBody>
       <CustomFooter gap="none">
-        <FooterButton onClick={handleClick}>Directions</FooterButton>
-        <FooterButton>More Info</FooterButton>
+        <FooterButton onClick={handleDirectionsClick}>Directions</FooterButton>
+        <FooterButton onClick={handleInfoClick}>More Info</FooterButton>
       </CustomFooter>
     </CustomCard>
   );
