@@ -5,15 +5,17 @@ import { Box } from "grommet";
 import styled from "styled-components";
 
 import CardItem from "./CardItem.component";
+import { data } from "../../mockData.js";
+import { breakpoint } from "../../styles/breakpoint";
 
 const CardList = () => {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     const getLocations = async () => {
-      const { data } = await axios.get(
-        "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-      );
+      // const { data } = await axios.get(
+      //   "https://my.api.mockaroo.com/locations.json?key=a45f1200"
+      // );
       //setLocations([{ city: "Somewhere", name: "Here", address: "address" }]);
       setLocations(data);
     };
@@ -29,7 +31,8 @@ const CardList = () => {
 };
 
 const ListContainer = styled(Box)`
-  margin: 1rem 3rem;
+  grid-column: 1/4;
+  margin: 0;
   overflow-y: auto;
   height: 100%;
   display: block;

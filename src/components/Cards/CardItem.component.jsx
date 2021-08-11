@@ -21,17 +21,10 @@ const CardItem = ({ locationInfo }) => {
 
   return (
     <CustomCard height="300px">
-      <CardHeader
-        margin={{
-          top: "1rem",
-          left: "1.5rem",
-          bottom: "1rem",
-          right: "1.5rem",
-        }}
-      >
-        <TitleHeading level="2">{name}</TitleHeading>
-      </CardHeader>
-      <CardBody gap="small" margin={{ left: "1.5rem" }}>
+      <CustomHeader>
+        <TitleHeading level="3">{name}</TitleHeading>
+      </CustomHeader>
+      <CardBody gap="small" margin={{ left: "1rem", right: "1rem" }}>
         <Box>
           <Text>{address}</Text>
           <Text>
@@ -46,12 +39,7 @@ const CardItem = ({ locationInfo }) => {
           <Text color="#fc8f00"> Number </Text>
         </Box>
       </CardBody>
-      <CustomFooter
-        margin={{ left: ".5rem" }}
-        pad={{ top: "1rem", bottom: "1rem" }}
-        gap="none"
-        flex={false}
-      >
+      <CustomFooter gap="none">
         <FooterButton>Directions</FooterButton>
         <FooterButton>More Info</FooterButton>
       </CustomFooter>
@@ -65,8 +53,18 @@ const CustomCard = styled(Card)`
   margin: 1rem;
 `;
 
+const CustomHeader = styled(CardHeader)`
+  margin: 1rem;
+`;
+
 const CustomFooter = styled(CardFooter)`
-  display: block;
+  padding: 1rem 0;
+  margin: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  max-width: 300px;
 `;
 
 const FooterButton = styled.button`
@@ -75,31 +73,18 @@ const FooterButton = styled.button`
   border: none;
   background-color: #444444;
   color: white;
-  max-width: 200px;
+  max-width: 140px;
   width: 100%;
-  margin-left: 1rem;
-
-  @media only screen and (${breakpoint.device.med}) {
-    max-width: 130px;
-  }
-
-  @media only screen and (${breakpoint.device.xs}) {
-    max-width: 80px;
-    font-size: 10px;
-    margin-left: 0.5rem;
-  }
 
   @media only screen and (${breakpoint.device.xxs}) {
-    max-width: 70px;
     font-size: 10px;
-    margin-left: 0.5rem;
   }
 `;
 
 const TitleHeading = styled(Heading)`
   @media only screen and (${breakpoint.device.lg}) {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 20px;
   }
 `;
 

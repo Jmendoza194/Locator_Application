@@ -4,12 +4,13 @@ import { Box } from "grommet";
 import styled from "styled-components";
 
 import Header from "../components/Header/Header.component";
-import CardList from "../components/Cards/CardList.component";
-import Footer from "../components/Footer/Footer.component";
 import { breakpoint } from "../styles/breakpoint";
+import LocationTable from "../components/LocationTable/LocationTable.component";
+import Footer from "../components/Footer/Footer.component";
+import MobileView from "../components/MobileView/MobileView.component";
 
 const Home = () => {
-  const [openList, setOpenList] = useState(true); //true = list tab, false = Map tab
+  const [openList, setOpenList] = useState(true);
   const [openMap, setOpenMap] = useState(false);
 
   const handleListClick = () => {
@@ -24,17 +25,19 @@ const Home = () => {
       setOpenList(!openList);
     }
   };
-
   return (
     <AppContainer>
       <Header />
-      <CardList />
-      <Footer
-        handleMapClick={handleMapClick}
-        handleListClick={handleListClick}
-        listClicked={openList}
-        mapClicked={openMap}
-      />
+      <LocationTable />
+      <MobileView />
+      <FooterContainer>
+        <Footer
+          handleMapClick={handleMapClick}
+          handleListClick={handleListClick}
+          listClicked={openList}
+          mapClicked={openMap}
+        />
+      </FooterContainer>
     </AppContainer>
   );
 };
@@ -42,13 +45,23 @@ const Home = () => {
 export default Home;
 
 const AppContainer = styled(Box)`
-  margin: 1.5rem 17rem 0 17rem;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   height: 100%;
-  @media only screen and (${breakpoint.device.lg}) {
-    margin: 1.5rem 10rem 0 10rem;
-  }
 
   @media only screen and (${breakpoint.device.sm}) {
+    display: flex;
     margin: 0;
+  }
+`;
+
+const FooterContainer = styled.div`
+  display: none;
+  @media only screen and (${breakpoint.device.sm}) {
+    display: block;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
   }
 `;

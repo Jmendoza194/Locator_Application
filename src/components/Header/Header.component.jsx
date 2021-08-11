@@ -35,11 +35,18 @@ export default HeaderComponent;
 const ResponsiveHeader = styled(Header)`
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
+  align-items: flex-start;
   flex-direction: row;
-  width: 100%;
+  grid-column: 3/9;
+  grid-row: 1/2;
+
   @media only screen and (${breakpoint.device.sm}) {
+    width: 100%;
+    /* position: fixed; */
     padding: 0.5rem 0;
     background-color: #444444;
+    margin: 0;
   }
 `;
 

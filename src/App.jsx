@@ -21,7 +21,7 @@ const App = () => {
 };
 
 const FullGrommet = styled(Grommet)`
-  height: 100%;
+  /* height: 100%; */
 `;
 
 export default App;

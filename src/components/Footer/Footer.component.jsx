@@ -29,16 +29,11 @@ const Footer = ({
   );
 };
 const FooterContainer = styled(Box)`
-  display: none;
-  @media only screen and (${breakpoint.device.sm}) {
-    width: 100%;
-    margin-top: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-end;
-    box-shadow: 0px -1px 3px 1px rgb(1, 1, 1, 0.2);
-  }
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  box-shadow: 0px -2px 3px 1px rgb(1, 1, 1, 0.2);
 `;
 
 const FooterButton = styled.button`
