@@ -4,8 +4,9 @@ import { Box } from "grommet";
 import styled from "styled-components";
 
 import Header from "../components/Header/Header.component";
+import CardList from "../components/Cards/CardList.component";
 import Footer from "../components/Footer/Footer.component";
-import breakpoint from "../styles/breakpoint";
+import { breakpoint } from "../styles/breakpoint";
 
 const Home = () => {
   const [openList, setOpenList] = useState(true); //true = list tab, false = Map tab
@@ -27,6 +28,7 @@ const Home = () => {
   return (
     <AppContainer>
       <Header />
+      <CardList />
       <Footer
         handleMapClick={handleMapClick}
         handleListClick={handleListClick}

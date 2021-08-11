@@ -8,7 +8,7 @@ import styled from "styled-components";
 import rioDesktopLogo from "../../assets/rioseo-logo.png";
 import rioMobileLogo from "../../assets/rioseo-logo-mobile.png";
 import locationIcon from "../../assets/location-icon.png";
-import breakpoint from "../../styles/breakpoint";
+import { breakpoint } from "../../styles/breakpoint";
 
 const HeaderComponent = () => {
   return (
@@ -81,7 +81,7 @@ const Bar = styled(FaBars)`
     font-size: 25px;
     margin-left: 1rem;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
