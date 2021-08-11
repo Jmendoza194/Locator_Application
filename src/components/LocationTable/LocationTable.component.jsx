@@ -6,12 +6,20 @@ import styled from "styled-components";
 import CardList from "../Cards/CardList.component";
 import MapContainer from "../Map/MapContainer.component";
 import { breakpoint } from "../../styles/breakpoint";
+import { useLocation } from "../../context/useLocation";
 
 const LocationTable = () => {
+  const { state } = useLocation();
+
+  const center = {
+    lng: state.selected_location.latitude,
+    lat: state.selected_location.longitude,
+  };
+
   return (
     <TableContainer>
       <CardList />
-      <MapContainer />
+      <MapContainer center={center} />
     </TableContainer>
   );
 };

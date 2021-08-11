@@ -14,10 +14,16 @@ import styled from "styled-components";
 
 import PhoneIcon from "../../assets/phone-icon.png";
 import { breakpoint } from "../../styles/breakpoint";
+import { useLocation } from "../../context/useLocation";
 
 const CardItem = ({ locationInfo }) => {
+  const { dispatch } = useLocation();
   const { address, city, state, name, postal_code } = locationInfo;
-  console.log(locationInfo);
+
+  const handleClick = () => {
+    dispatch({ type: "select_location", payload: locationInfo });
+    console.log(locationInfo);
+  };
 
   return (
     <CustomCard height="300px">
@@ -40,7 +46,7 @@ const CardItem = ({ locationInfo }) => {
         </Box>
       </CardBody>
       <CustomFooter gap="none">
-        <FooterButton>Directions</FooterButton>
+        <FooterButton onClick={handleClick}>Directions</FooterButton>
         <FooterButton>More Info</FooterButton>
       </CustomFooter>
     </CustomCard>
@@ -75,6 +81,10 @@ const FooterButton = styled.button`
   color: white;
   max-width: 140px;
   width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @media only screen and (${breakpoint.device.xxs}) {
     font-size: 10px;

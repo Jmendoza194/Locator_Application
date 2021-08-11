@@ -3,6 +3,7 @@ import { Grommet } from "grommet";
 
 import styled from "styled-components";
 import Home from "./pages/Home";
+import { LocationProvider } from "./context/useLocation";
 
 const customTheme = {
   global: {
@@ -14,9 +15,11 @@ const customTheme = {
 
 const App = () => {
   return (
-    <FullGrommet full={true} theme={customTheme}>
-      <Home />
-    </FullGrommet>
+    <LocationProvider>
+      <FullGrommet full={true} theme={customTheme}>
+        <Home />
+      </FullGrommet>
+    </LocationProvider>
   );
 };
 

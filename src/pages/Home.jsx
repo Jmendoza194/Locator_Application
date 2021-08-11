@@ -4,14 +4,19 @@ import { Box } from "grommet";
 import styled from "styled-components";
 
 import Header from "../components/Header/Header.component";
-import { breakpoint } from "../styles/breakpoint";
 import LocationTable from "../components/LocationTable/LocationTable.component";
 import Footer from "../components/Footer/Footer.component";
 import MobileView from "../components/MobileView/MobileView.component";
+import { breakpoint } from "../styles/breakpoint";
+import { useFetchLocations } from "../util/useFetchLocations";
+import { useLocation } from "../context/useLocation";
 
 const Home = () => {
   const [openList, setOpenList] = useState(true);
   const [openMap, setOpenMap] = useState(false);
+  const { dispatch } = useLocation();
+
+  useFetchLocations(dispatch);
 
   const handleListClick = () => {
     if (!openList) {

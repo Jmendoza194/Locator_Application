@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import MapContainer from "../Map/MapContainer.component";
 import CardList from "../Cards/CardList.component";
-import Footer from "../Footer/Footer.component";
 import { breakpoint } from "../../styles/breakpoint";
 
 const MobileView = () => {
