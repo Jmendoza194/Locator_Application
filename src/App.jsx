@@ -1,6 +1,7 @@
 import React from "react";
 import { Grommet } from "grommet";
 
+import styled from "styled-components";
 import Home from "./pages/Home";
 
 const customTheme = {
@@ -13,10 +14,14 @@ const customTheme = {
 
 const App = () => {
   return (
-    <Grommet theme={customTheme}>
+    <FullGrommet full={true} theme={customTheme}>
       <Home />
-    </Grommet>
+    </FullGrommet>
   );
 };
+
+const FullGrommet = styled(Grommet)`
+  height: 100%;
+`;
 
 export default App;
