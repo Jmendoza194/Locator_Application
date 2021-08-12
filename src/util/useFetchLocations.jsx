@@ -9,7 +9,7 @@ export const useFetchLocations = async (dispatch) => {
         "https://my.api.mockaroo.com/locations.json?key=a45f1200"
       );
 
-      dispatch("fetch_locations", { payload: data });
+      dispatch({ type: "fetch_locations", payload: data });
     };
     fetchLocations();
 

@@ -20,7 +20,7 @@ const LocationTable = () => {
     lng: state.selected_location.latitude,
     lat: state.selected_location.longitude,
   };
-  console.log("hello?");
+
   return (
     <>
       <TableContainer gap="small">
