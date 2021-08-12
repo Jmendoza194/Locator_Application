@@ -43,6 +43,7 @@ const InnerContainer = styled(Box)`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2);
+  height: 100%;
 `;
 
 export default LocationTable;
