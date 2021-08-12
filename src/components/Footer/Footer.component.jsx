@@ -2,30 +2,31 @@ import React from "react";
 
 import styled from "styled-components";
 import { Box } from "grommet";
+import { useLocation } from "../../context/useLocation";
 
-const Footer = ({
-  listClicked,
-  mapClicked,
-  handleMapClick,
-  handleListClick,
-}) => {
+const Footer = () => {
+  const { state, dispatch } = useLocation();
+
+  const handleMapClick = () => {
+    dispatch({ type: "open_map" });
+  };
+
+  const handleListClick = () => {
+    dispatch({ type: "open_card_list" });
+  };
+
   return (
     <FooterContainer>
-      <FooterButton
-        onClick={handleListClick}
-        Selected={listClicked ? true : false}
-      >
+      <FooterButton onClick={handleListClick} Selected={state.open_cardTab}>
         List
       </FooterButton>
-      <FooterButton
-        onClick={handleMapClick}
-        Selected={mapClicked ? true : false}
-      >
+      <FooterButton onClick={handleMapClick} Selected={state.open_mapTab}>
         Map
       </FooterButton>
     </FooterContainer>
   );
 };
+
 const FooterContainer = styled(Box)`
   display: flex;
   width: 100%;

@@ -17,6 +17,7 @@ import PhoneIcon from "../../assets/phone-icon.png";
 import DirectionIcon from "../../assets/direction-icon.png";
 import { useLocation } from "../../context/useLocation";
 import TimeList from "../util/TimeList.component";
+import { breakpoint } from "../../styles/breakpoint";
 
 const Modal = () => {
   const { state, dispatch } = useLocation();
@@ -40,7 +41,7 @@ const Modal = () => {
     <ModalBackground>
       <ModalCard>
         <ExitButton onClick={handleExitClick}>&#9747;</ExitButton>
-        <CardHeader height="200px" margin="1.5rem">
+        <ModalHeader>
           <Image
             width="100%"
             height="100%"
@@ -48,7 +49,7 @@ const Modal = () => {
             src={ImagePlaceholder}
             alt="image placeholder"
           />
-        </CardHeader>
+        </ModalHeader>
         <CardBody margin={{ left: "1.5rem", right: "1.5rem" }} gap="small">
           <Heading level="3">{name}</Heading>
           <Box>
@@ -57,7 +58,7 @@ const Modal = () => {
               {city}, {state.state} {postal_code}
             </Text>
           </Box>
-          <Box direction="row" gap="xlarge">
+          <Box direction="row" gap="xlarge" margin={{ top: "1rem" }}>
             <Box direction="row">
               <Image src={PhoneIcon} alt="phone Icon" />
               <Text color="#fc8f00"> Number </Text>
@@ -105,6 +106,14 @@ const ModalCard = styled(Card)`
   background-color: white;
   margin: 1rem;
   border-radius: 0;
+`;
+
+const ModalHeader = styled(CardHeader)`
+  height: 200px;
+  margin: 1.5rem;
+  @media only screen and (${breakpoint.device.sm}) {
+    height: 300px;
+  }
 `;
 
 const ModalFooter = styled(CardFooter)`

@@ -9,7 +9,6 @@ import Modal from "../Modal/Modal.component";
 
 const MapContainer = () => {
   const { state } = useLocation();
-  console.log(state.selected_location);
 
   const center = {
     lat: parseInt(state.selected_location.latitude),

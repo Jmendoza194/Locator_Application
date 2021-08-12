@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Box, Heading } from "grommet";
 import styled from "styled-components";
@@ -9,13 +9,18 @@ import { breakpoint } from "../../styles/breakpoint";
 import { useLocation } from "../../context/useLocation";
 
 const LocationTable = () => {
-  const { state } = useLocation();
+  const { state, dispatch } = useLocation();
+
+  //Set mobile view back to default
+  useEffect(() => {
+    dispatch({ type: "open_card_list" });
+  }, [dispatch]);
 
   const center = {
     lng: state.selected_location.latitude,
     lat: state.selected_location.longitude,
   };
-
+  console.log("hello?");
   return (
     <>
       <TableContainer gap="small">

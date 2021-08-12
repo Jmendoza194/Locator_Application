@@ -6,11 +6,14 @@ import styled from "styled-components";
 import MapContainer from "../Map/MapContainer.component";
 import CardList from "../Cards/CardList.component";
 import { breakpoint } from "../../styles/breakpoint";
+import { useLocation } from "../../context/useLocation";
 
-const MobileView = ({ showMap }) => {
+const MobileView = () => {
+  const { state } = useLocation();
+
   return (
     <MobileContainer>
-      {showMap ? <MapContainer /> : <CardList />}
+      {state.open_mapTab ? <MapContainer /> : <CardList />}
     </MobileContainer>
   );
 };

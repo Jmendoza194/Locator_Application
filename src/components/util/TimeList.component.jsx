@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Box, Text } from "grommet";
 
 import { useLocation } from "../../context/useLocation";
+import { breakpoint } from "../../styles/breakpoint";
 
 const TimeList = () => {
   const { state } = useLocation();
@@ -54,10 +55,10 @@ const TimeList = () => {
   });
 
   return (
-    <Box direction="row" wrap={true}>
+    <ListContainer direction="row" wrap={true}>
       {" "}
       {renderTime}
-    </Box>
+    </ListContainer>
   );
 };
 
@@ -71,6 +72,12 @@ const TimeBox = styled(Box)`
     `
     font-weight: 700;
   `}
+`;
+
+const ListContainer = styled(Box)`
+  @media only screen and (${breakpoint.device.sm}) {
+    margin-top: 1rem;
+  }
 `;
 
 export default TimeList;

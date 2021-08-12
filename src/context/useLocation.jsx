@@ -15,6 +15,8 @@ const locationReducer = (state, action) => {
         ...state,
         selected_location: action.payload,
         map: true,
+        open_cardTab: false,
+        open_mapTab: true,
       };
     }
     case "more_info": {
@@ -22,6 +24,8 @@ const locationReducer = (state, action) => {
         ...state,
         selected_location: action.payload,
         modal: true,
+        open_cardTab: false,
+        open_mapTab: true,
       };
     }
     case "close_modal": {
@@ -34,6 +38,21 @@ const locationReducer = (state, action) => {
       return {
         ...state,
         today: action.payload,
+      };
+    }
+    case "open_card_list": {
+      return {
+        ...state,
+        open_cardTab: true,
+        open_mapTab: false,
+      };
+    }
+    case "open_map": {
+      return {
+        ...state,
+        modal: false,
+        open_cardTab: false,
+        open_mapTab: true,
       };
     }
     default: {
@@ -49,6 +68,8 @@ const LocationProvider = ({ children }) => {
     modal: false,
     map: false,
     today: null,
+    open_cardTab: true,
+    open_mapTab: false,
   });
   const value = { state, dispatch };
 

@@ -11,43 +11,25 @@ import { breakpoint } from "../styles/breakpoint";
 import { useFetchLocations } from "../util/useFetchLocations.jsx";
 import { useLocation } from "../context/useLocation";
 import { useDay } from "../util/useDay";
+import { useWindowSize } from "../util/useWindowSize";
 
 const Home = () => {
-  const [openList, setOpenList] = useState(true);
-  const [openMap, setOpenMap] = useState(false);
   const { dispatch } = useLocation();
-  const { innerWidth } = window;
+  const { width } = useWindowSize();
 
   useDay(dispatch);
   useFetchLocations(dispatch);
 
-  const handleListClick = () => {
-    if (!openList) {
-      setOpenList(!openList);
-      setOpenMap(!openMap);
-    }
-  };
-  const handleMapClick = () => {
-    if (!openMap) {
-      setOpenMap(!openMap);
-      setOpenList(!openList);
-    }
-  };
   return (
     <AppContainer>
       <Header />
-      {innerWidth >= breakpoint.device.sm ? (
+      {width >= 768 ? (
         <LocationTable />
       ) : (
         <>
-          <MobileView showMap={openMap} />
+          <MobileView />
           <FooterContainer>
-            <Footer
-              handleMapClick={handleMapClick}
-              handleListClick={handleListClick}
-              listClicked={openList}
-              mapClicked={openMap}
-            />
+            <Footer />
           </FooterContainer>
         </>
       )}
