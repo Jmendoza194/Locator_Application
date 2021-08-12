@@ -11,7 +11,6 @@ const locationReducer = (state, action) => {
       };
     }
     case "get_directions": {
-      console.log(action.payload);
       return {
         ...state,
         selected_location: action.payload,
@@ -19,7 +18,6 @@ const locationReducer = (state, action) => {
       };
     }
     case "more_info": {
-      console.log(action.payload);
       return {
         ...state,
         selected_location: action.payload,
@@ -27,10 +25,15 @@ const locationReducer = (state, action) => {
       };
     }
     case "close_modal": {
-      console.log(action.payload);
       return {
         ...state,
         modal: false,
+      };
+    }
+    case "today": {
+      return {
+        ...state,
+        today: action.payload,
       };
     }
     default: {
@@ -45,6 +48,7 @@ const LocationProvider = ({ children }) => {
     selected_location: {},
     modal: false,
     map: false,
+    today: null,
   });
   const value = { state, dispatch };
 

@@ -17,12 +17,12 @@ import { breakpoint } from "../../styles/breakpoint";
 import { useLocation } from "../../context/useLocation";
 
 const CardItem = ({ locationInfo }) => {
-  const { dispatch } = useLocation();
-  const { address, city, state, name, postal_code } = locationInfo;
+  const { state, dispatch } = useLocation();
+  const { address, city, name, postal_code } = locationInfo;
+  const today = `${state.today}_close`;
 
   const handleDirectionsClick = () => {
     dispatch({ type: "get_directions", payload: locationInfo });
-    console.log(locationInfo);
   };
 
   const handleInfoClick = () => {
@@ -38,11 +38,11 @@ const CardItem = ({ locationInfo }) => {
         <Box>
           <Text>{address}</Text>
           <Text>
-            {city}, {state} {postal_code}
+            {city}, {locationInfo.state} {postal_code}
           </Text>
         </Box>
         <Box>
-          <Text>Open Today until </Text>
+          <Text>Open Today until {locationInfo[today.toLowerCase()]}</Text>
         </Box>
         <Box direction="row">
           <Image src={PhoneIcon} alt="phone Icon" />

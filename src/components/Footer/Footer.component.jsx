@@ -3,8 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import { Box } from "grommet";
 
-import { breakpoint } from "../../styles/breakpoint";
-
 const Footer = ({
   listClicked,
   mapClicked,

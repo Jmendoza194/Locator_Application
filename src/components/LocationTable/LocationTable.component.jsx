@@ -32,10 +32,6 @@ const LocationTable = () => {
 const TableContainer = styled(Box)`
   grid-column: 3/9;
   grid-row: 2/6;
-
-  @media only screen and (${breakpoint.device.sm}) {
-    display: none;
-  }
 `;
 
 const InnerContainer = styled(Box)`

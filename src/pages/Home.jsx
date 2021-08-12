@@ -8,14 +8,17 @@ import LocationTable from "../components/LocationTable/LocationTable.component";
 import Footer from "../components/Footer/Footer.component";
 import MobileView from "../components/MobileView/MobileView.component";
 import { breakpoint } from "../styles/breakpoint";
-import { useFetchLocations } from "../util/useFetchLocations";
+import { useFetchLocations } from "../util/useFetchLocations.jsx";
 import { useLocation } from "../context/useLocation";
+import { useDay } from "../util/useDay";
 
 const Home = () => {
   const [openList, setOpenList] = useState(true);
   const [openMap, setOpenMap] = useState(false);
   const { dispatch } = useLocation();
+  const { innerWidth } = window;
 
+  useDay(dispatch);
   useFetchLocations(dispatch);
 
   const handleListClick = () => {
@@ -30,22 +33,24 @@ const Home = () => {
       setOpenList(!openList);
     }
   };
-
-  const handleInfoClick = () => {};
-
   return (
     <AppContainer>
       <Header />
-      <LocationTable />
-      <MobileView />
-      <FooterContainer>
-        <Footer
-          handleMapClick={handleMapClick}
-          handleListClick={handleListClick}
-          listClicked={openList}
-          mapClicked={openMap}
-        />
-      </FooterContainer>
+      {innerWidth >= breakpoint.device.sm ? (
+        <LocationTable />
+      ) : (
+        <>
+          <MobileView showMap={openMap} />
+          <FooterContainer>
+            <Footer
+              handleMapClick={handleMapClick}
+              handleListClick={handleListClick}
+              listClicked={openList}
+              mapClicked={openMap}
+            />
+          </FooterContainer>
+        </>
+      )}
     </AppContainer>
   );
 };

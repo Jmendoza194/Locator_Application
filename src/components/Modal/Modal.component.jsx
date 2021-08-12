@@ -16,17 +16,24 @@ import ImagePlaceholder from "../../assets/image-placeholder.jpg";
 import PhoneIcon from "../../assets/phone-icon.png";
 import DirectionIcon from "../../assets/direction-icon.png";
 import { useLocation } from "../../context/useLocation";
+import TimeList from "../util/TimeList.component";
 
 const Modal = () => {
   const { state, dispatch } = useLocation();
   const { city, address, postal_code, name } = state.selected_location;
 
-  console.log(state.url);
-
   const encodedAddress = encodeURI(address);
 
   const handleExitClick = () => {
     dispatch({ type: "close_modal" });
+  };
+
+  const handleDirectionClick = () => {
+    window.open(
+      `https://www.google.com/maps/dir/?api=1&origin&destination=${encodedAddress}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
@@ -55,15 +62,12 @@ const Modal = () => {
               <Image src={PhoneIcon} alt="phone Icon" />
               <Text color="#fc8f00"> Number </Text>
             </Box>
-            <DirectionButton
-              rel="noopener"
-              href={`https://www.google.com/maps/dir/?api=1&destination${encodedAddress}`}
-              target="_blank"
-            >
+            <DirectionButton onClick={handleDirectionClick}>
               <Image src={DirectionIcon} alt="phone Icon" />
               <Text color="#fc8f00"> Get Directions </Text>
             </DirectionButton>
           </Box>
+          <TimeList />
         </CardBody>
         <ModalFooter>
           <CustomFooterButton
@@ -139,7 +143,7 @@ const ExitButton = styled.button`
   }
 `;
 
-const DirectionButton = styled.a`
+const DirectionButton = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
