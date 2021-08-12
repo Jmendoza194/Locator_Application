@@ -11,10 +11,10 @@ import { useLocation } from "../../context/useLocation";
 const LocationTable = () => {
   const { state, dispatch } = useLocation();
 
-  //Set mobile view back to default
-  useEffect(() => {
-    dispatch({ type: "open_card_list" });
-  }, [dispatch]);
+  // //Set mobile view back to default
+  // useEffect(() => {
+  //   dispatch({ type: "open_card_list" });
+  // }, [dispatch]);
 
   const center = {
     lng: state.selected_location.latitude,

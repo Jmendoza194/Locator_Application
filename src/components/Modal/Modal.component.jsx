@@ -50,22 +50,22 @@ const Modal = () => {
             alt="image placeholder"
           />
         </ModalHeader>
-        <CardBody margin={{ left: "1.5rem", right: "1.5rem" }} gap="small">
-          <Heading level="3">{name}</Heading>
+        <CardBody margin={{ left: "1.5rem", right: "1.5rem" }} gap="xsmall">
+          <Heading level="5">{name}</Heading>
           <Box>
-            <Text>{address}</Text>
-            <Text>
+            <CustomText>{address}</CustomText>
+            <CustomText>
               {city}, {state.state} {postal_code}
-            </Text>
+            </CustomText>
           </Box>
-          <Box direction="row" gap="xlarge" margin={{ top: "1rem" }}>
+          <Box direction="row" gap="large">
             <Box direction="row">
               <Image src={PhoneIcon} alt="phone Icon" />
-              <Text color="#fc8f00"> Number </Text>
+              <CustomText color="#fc8f00"> Number </CustomText>
             </Box>
             <DirectionButton onClick={handleDirectionClick}>
               <Image src={DirectionIcon} alt="phone Icon" />
-              <Text color="#fc8f00"> Get Directions </Text>
+              <CustomText color="#fc8f00"> Get Directions </CustomText>
             </DirectionButton>
           </Box>
           <TimeList />
@@ -110,9 +110,19 @@ const ModalCard = styled(Card)`
 
 const ModalHeader = styled(CardHeader)`
   height: 200px;
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
   @media only screen and (${breakpoint.device.sm}) {
-    height: 300px;
+    height: 250px;
+  }
+
+  @media only screen and (${breakpoint.device.xs}) {
+    height: 200px;
+  }
+
+  @media only screen and (${breakpoint.device.xxs}) {
+    margin: 1rem;
+    margin-bottom: 0.5rem;
+    height: 120px;
   }
 `;
 
@@ -150,6 +160,11 @@ const ExitButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  @media only screen and (${breakpoint.device.xxs}) {
+    margin-right: 1rem;
+    font-size: 15px;
+  }
 `;
 
 const DirectionButton = styled.button`
@@ -161,6 +176,15 @@ const DirectionButton = styled.button`
   text-decoration: none;
   &:hover {
     cursor: pointer;
+  }
+`;
+
+const CustomText = styled(Text)`
+  font-size: 15px;
+  line-height: 15px;
+  @media only screen and (${breakpoint.device.lg}) {
+    font-size: 10px;
+    line-height: 15px;
   }
 `;
 

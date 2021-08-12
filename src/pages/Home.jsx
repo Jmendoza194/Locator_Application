@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <AppContainer>
       <Header />
-      {width >= 768 ? (
+      {width > 768 ? (
         <LocationTable />
       ) : (
         <>

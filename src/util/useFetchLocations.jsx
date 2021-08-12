@@ -11,13 +11,8 @@ export const useFetchLocations = async (dispatch) => {
 
       dispatch("fetch_locations", { payload: data });
     };
-    //fetchLocations();
+    fetchLocations();
 
-    dispatch({ type: "fetch_locations", payload: data });
+    // dispatch({ type: "fetch_locations", payload: data });
   }, []);
 };
-
-// const { data } = await axios.get(
-//   "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-// );
-//setLocations([{ city: "Somewhere", name: "Here", address: "address" }]);
